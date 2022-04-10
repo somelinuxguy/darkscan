@@ -15,3 +15,12 @@ You can just read the code to learn more, it is very basic.
 
 ## To make it go (basically)
 export HIBPKEY=12345; npm install; node scan.js
+
+### References
+
+https://haveibeenpwned.com/API/v3
+
+Sample:
+
+curl -X GET https://haveibeenpwned.com/api/v3/breachedaccount/void@sect.net -H "user-agent: revel_hibp" -H "hibp-api-key: deadb33f------"
+[{"Name":"2844Breaches"},{"Name":"Cit0day"}]

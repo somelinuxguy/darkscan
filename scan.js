@@ -1,23 +1,12 @@
 /*
 Take an email address from our CSV and then look
-it up at HIBP. We are nice and wait 2 seconds
-between lookups so as to avoid slamming their system
-with requests.
-
-https://haveibeenpwned.com/API/v3  for docs.
+it up at HIBP. Wait 2 seconds.
 
 We use unix style reporting:
-No listings = silence
-Any listing = that email address is returned with relevant info.
-
-Example:
-curl -X GET https://haveibeenpwned.com/api/v3/breachedaccount/void@sect.net -H "user-agent: revel_hibp" -H "hibp-api-key: deadb33f------"
-[{"Name":"2844Breaches"},{"Name":"Cit0day"},{"Name":"Collection1"},{"Name":"RiverCityMedia"},{"Name":"VerificationsIO"}]%
-
-May add this later but you get the idea:
-curl -X GET https://haveibeenpwned.com/api/v3/pasteaccount/void@sect.net -H "user-agent: revel_hibp" -H "hibp-api-key: deadb33f-----"
-
+No listings = silence (Not a 200 http status)
+Any listing = that email address is returned with the list of breaches it is in.
 */
+
 import fetch from "node-fetch";
 import fs from "fs";
 const hibpKey = process.env.HIBPKEY;
@@ -50,6 +39,5 @@ async function processAccounts () {
 }
 
 //main
-// testing - let emailList = ['account-exists@hibp-integration-tests.com'];
 var emailList = fs.readFileSync('emails.txt').toString().split("\n");
 processAccounts();
