@@ -14,4 +14,4 @@ You can just read the code to learn more, it is very basic.
 * An appreciation for British spelling
 
 ## To make it go (basically)
-npm install; node scan.js
+export HIBPKEY=12345; npm install; node scan.js
