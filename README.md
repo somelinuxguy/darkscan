@@ -12,3 +12,6 @@ You can just read the code to learn more, it is very basic.
 * An API Key for HIBP which costs you 4 dollars.
 * A sense of humour
 * An appreciation for British spelling
+
+## To make it go (basically)
+npm install; node scan.js
